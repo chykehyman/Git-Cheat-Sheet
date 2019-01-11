@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import config from './dbConfig';
+import seedDb from '../seeder/seedController';
 
 export default env => {
   mongoose.Promise = global.Promise;
@@ -24,7 +25,10 @@ export default env => {
   }
 
   const db = mongoose.connection;
-  db.once('open', () => console.info({ message: 'Connected to the database' }));
+  db.once('open', () => {
+    console.info({ message: 'Connected to the database' });
+    seedDb();
+  });
 
   db.on('error', () => console.error({ message: 'MongoDB connection error:' }));
 };
