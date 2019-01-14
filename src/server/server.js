@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import compression from 'compression';
 import dotenv from 'dotenv';
+import { resolve } from 'path';
 import mongodbConfig from './config';
 import userRoutes from './routes/userRoutes';
 import apiResponse from './helpers/apiResponse';
@@ -17,6 +18,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('build'));
 
 mongodbConfig(env);
 
@@ -26,9 +28,13 @@ app.get('/api', (request, response) =>
 
 app.use('/api', userRoutes);
 
-app.all('*', (request, response) =>
-  apiResponse.error(response, 404, 'API route does not exist. Redirect to /api/v1')
+app.all('/api*', (request, response) =>
+  apiResponse.error(response, 404, 'API route does not exist. Redirect to /api')
 );
+
+app.get('*', (request, response) => {
+  response.sendFile(resolve(__dirname, '../client/index.html'));
+});
 
 app.listen(port, () =>
   console.log({
