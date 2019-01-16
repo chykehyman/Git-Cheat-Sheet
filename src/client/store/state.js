@@ -7,6 +7,7 @@ export default {
   cheats: {
     isFetching: false,
     allGitCheats: [],
+    searchData: null,
     error: ''
   }
 };

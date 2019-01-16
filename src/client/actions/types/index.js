@@ -6,5 +6,6 @@ export default keymirror({
   USER_AUTH_FAILURE: null,
   IS_FETCHING: null,
   CHEATS_FETCH_SUCCESS: null,
-  CHEATS_FETCH_FAILURE: null
+  CHEATS_FETCH_FAILURE: null,
+  SEARCH_RESPONSE: null
 });
