@@ -13,6 +13,8 @@ export default (state = initialState.cheats, action) => {
       };
     case types.CHEATS_FETCH_FAILURE:
       return { ...state, error: action.error };
+    case types.SEARCH_RESPONSE:
+      return { ...state, searchData: [...action.searchData] };
     default:
       return state;
   }

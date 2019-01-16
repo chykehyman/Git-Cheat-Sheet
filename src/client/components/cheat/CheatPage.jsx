@@ -7,13 +7,14 @@ import Spinner from 'react-md-spinner';
 import NavBar from '../common/NavBar';
 import SearchBar from '../common/SearchBar';
 import CategoryList from './CategoryList';
-import getCheats from '../../actions/creators/cheatsAction';
+import getCheats, { searchCheats } from '../../actions/creators/cheatsAction';
 import { logout } from '../../actions/creators/userAuthActions';
 
 export class CheatPage extends Component {
   state = {
     isDisplayed: false,
-    cheatId: '0'
+    cheatId: '0',
+    searchText: ''
   };
 
   componentDidMount() {
@@ -21,7 +22,7 @@ export class CheatPage extends Component {
     getCheats();
   }
 
-  onToggleDisplay = cheatId => {
+  handleToggleDisplay = cheatId => {
     this.setState({ isDisplayed: true, cheatId }, () => {
       setTimeout(() => this.setState({ isDisplayed: false }), 1500);
     });
@@ -33,9 +34,28 @@ export class CheatPage extends Component {
     history.push('/signin');
   };
 
+  handleOnChange = event => {
+    event.persist();
+    this.setState(
+      prevState => ({
+        ...prevState,
+        searchText: event.target.value
+      }),
+      () => this.handleCheatSearch()
+    );
+  };
+
+  handleCheatSearch = () => {
+    const { searchText } = this.state;
+    const { searchCheats } = this.props;
+    searchCheats(searchText);
+  };
+
   render() {
-    const { isFetching, allGitCheats, username } = this.props;
+    const { isFetching, allGitCheats, searchData, username } = this.props;
     const { isDisplayed, cheatId } = this.state;
+
+    const cheatsData = searchData || allGitCheats;
 
     return (
       <MDBRow className="d-flex justify-content-center">
@@ -53,11 +73,11 @@ export class CheatPage extends Component {
             </div>
           ) : (
             <Fragment>
-              <SearchBar />
+              <SearchBar onChangeHandler={this.handleOnChange} />
               <CategoryList
-                allGitCheats={allGitCheats}
+                allGitCheats={cheatsData}
                 isDisplayed={isDisplayed}
-                toggleDisplay={this.onToggleDisplay}
+                toggleDisplay={this.handleToggleDisplay}
                 cheatId={cheatId}
               />
             </Fragment>
@@ -69,13 +89,14 @@ export class CheatPage extends Component {
 }
 
 const mapStateToProps = ({
-  gitCheats: { isFetching, allGitCheats },
+  gitCheats: { isFetching, allGitCheats, searchData },
   userAuth: {
     user: { username }
   }
 }) => ({
   isFetching,
   allGitCheats,
+  searchData,
   username
 });
 
@@ -84,10 +105,14 @@ CheatPage.propTypes = {
   allGitCheats: PropTypes.array.isRequired,
   getCheats: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
+  searchCheats: PropTypes.func.isRequired
 };
 
 export default connect(
   mapStateToProps,
-  { getCheats, logout }
+  { getCheats, logout, searchCheats }
 )(CheatPage);

@@ -50,4 +50,5 @@ export default userData => async dispatch => {
 export const logout = () => dispatch => {
   localStorage.removeItem('token');
   setUser(dispatch, null);
+  toast('success', 'Logout was successful');
 };

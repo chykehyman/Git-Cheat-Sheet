@@ -36,3 +36,20 @@ export default () => async dispatch => {
     dispatch(isFetching(false));
   }
 };
+
+export const searchCheats = keywords => (dispatch, getState) => {
+  const cheats = getState().gitCheats.allGitCheats.filter(
+    category =>
+      category.name.includes(keywords) ||
+      category.cheats
+        .map(cheat => cheat.description.toLowerCase())
+        .some(description => description.includes(keywords)) ||
+      category.cheats
+        .map(cheat => cheat.command.toLowerCase())
+        .some(command => command.includes(keywords))
+  );
+  return dispatch({
+    type: types.SEARCH_RESPONSE,
+    searchData: cheats
+  });
+};
