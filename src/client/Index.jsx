@@ -11,6 +11,7 @@ import './assets/styles/main';
 
 import Routes from './routes/Index';
 import appStore from './store/config';
+import { setUser } from './actions/creators/userAuthActions';
 
 toastr.options = {
   showMethod: 'slideDown',
@@ -23,8 +24,10 @@ toastr.options = {
   timeOut: 4000
 };
 
+setUser(appStore.dispatch, localStorage.getItem('token'));
+
 ReactDOM.render(
-  <Provider store={appStore()}>
+  <Provider store={appStore}>
     <Router>
       <Routes />
     </Router>
