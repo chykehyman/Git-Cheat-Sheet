@@ -18,7 +18,12 @@ const userAuthFailure = error => ({
   error
 });
 
-const userAuthProcess = userData => async dispatch => {
+export const setUser = (dispatch, payload) => {
+  if (payload) dispatch(userAuthSuccess(_decode(payload)));
+  else dispatch(userAuthSuccess({}));
+};
+
+export default userData => async dispatch => {
   let route = 'signup';
 
   if (typeof userData.confirmPassword === 'undefined') {
@@ -31,7 +36,7 @@ const userAuthProcess = userData => async dispatch => {
     const { message, payload } = response.data;
 
     localStorage.setItem('token', payload);
-    dispatch(userAuthSuccess(_decode(payload)));
+    setUser(dispatch, payload);
     dispatch(isProcessing(false));
     toast('success', message);
   } catch (error) {
@@ -42,4 +47,7 @@ const userAuthProcess = userData => async dispatch => {
   }
 };
 
-export default userAuthProcess;
+export const logout = () => dispatch => {
+  localStorage.removeItem('token');
+  setUser(dispatch, null);
+};

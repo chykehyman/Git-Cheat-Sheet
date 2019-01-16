@@ -8,10 +8,7 @@ export default (state = initialState.auth, action) => {
     case types.USER_AUTH_SUCCESS:
       return {
         ...state,
-        user: {
-          ...state.user,
-          ...action.user
-        },
+        user: action.user,
         authError: ''
       };
     case types.USER_AUTH_FAILURE:

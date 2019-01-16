@@ -20,7 +20,7 @@ import signUpAction from '../../actions/creators/userAuthActions';
 import { signUpValidator } from '../../../../shared/userSharedValidator';
 import AppLogo from '../common/AppLogo';
 
-class SignUpPage extends Component {
+export class SignUpPage extends Component {
   initialState = {
     data: {
       username: '',
@@ -67,7 +67,7 @@ class SignUpPage extends Component {
       }));
     } else {
       signUpAction({ ...data }).then(() => {
-        if (!this.props.authError) history.push('/');
+        if (!this.props.authError) history.push('/cheats');
       });
     }
   };

@@ -26,4 +26,4 @@ if (module.hot) {
   });
 }
 
-export default configureStore;
+export default configureStore();
