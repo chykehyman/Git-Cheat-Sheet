@@ -14,10 +14,11 @@
     "build:dev:server": "pm2 start src/server/server.js --watch --interpreter babel-node",
     "build:prod:client": "webpack --mode production",
     "build:prod:server": "babel src/server/app.js -d build/",
-    "build:prod": "npm run build:prod:client && npm run build:prod:server"
+    "build:prod": "npm run build:prod:client && npm run build:prod:server",
+    "test": "export NODE_ENV=test && nyc --reporter=html --reporter=text mocha --timeout 500000 --require @babel/register --require @babel/polyfill src/server/tests/*test.js --watch --watch-extensions js "
   },
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
+    "@babel/polyfill": "^7.2.5",
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
