@@ -105,11 +105,15 @@ CheatPage.propTypes = {
   allGitCheats: PropTypes.array.isRequired,
   getCheats: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   searchCheats: PropTypes.func.isRequired
+};
+
+CheatPage.defaultProps = {
+  username: 'username'
 };
 
 export default connect(

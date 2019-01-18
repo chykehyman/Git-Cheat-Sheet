@@ -18,6 +18,14 @@
     "jest": true,
     "mocha": true
   },
+  "globals": {
+    "moxios": true,
+    "storeMock": true,
+    "shallow": true,
+    "mount": true,
+    "toJson": true,
+    "React": true
+  },
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",

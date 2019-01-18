@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> component renders the header component without crashing 1`] = `
+<div
+  className="d-flex flex-row justify-content-between align-items-center mt-4"
+>
+  <img
+    alt="app logo"
+    height="40px"
+    src={
+      Object {
+        "process": [Function],
+      }
+    }
+    width="40px"
+  />
+  <h4
+    style={
+      Object {
+        "color": "#555",
+      }
+    }
+  >
+    Git Cheat Sheet
+  </h4>
+  <button
+    data-tip="Log Out"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#bbb",
+        "borderRadius": "50%",
+        "color": "white",
+        "cursor": "pointer",
+        "fontSize": "22px",
+        "height": "40px",
+        "lineHeight": "40px",
+        "outline": "none",
+        "textAlign": "center",
+        "width": "40px",
+      }
+    }
+    type="button"
+  >
+    T
+  </button>
+  <ReactTooltip
+    effect="solid"
+    insecure={true}
+    place="bottom"
+    resizeHide={true}
+    wrapper="div"
+  />
+</div>
+`;

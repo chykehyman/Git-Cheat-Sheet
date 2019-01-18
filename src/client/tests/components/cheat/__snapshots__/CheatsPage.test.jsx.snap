@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignInPage /> component render without crashing 1`] = `
+<t
+  className="d-flex justify-content-center"
+  tag="div"
+>
+  <t
+    lg={null}
+    md="10"
+    sm={null}
+    tag="div"
+    xl={null}
+    xs={null}
+  >
+    <NavbarPage
+      logout={[Function]}
+      username="some_user"
+    />
+    <SearchBar
+      onChangeHandler={[Function]}
+    />
+    <CategoryList
+      allGitCheats={
+        Array [
+          Object {
+            "cheats": Array [
+              Object {},
+            ],
+            "name": "Install Git",
+          },
+        ]
+      }
+      cheatId="0"
+      isDisplayed={false}
+      toggleDisplay={[Function]}
+    />
+  </t>
+</t>
+`;
