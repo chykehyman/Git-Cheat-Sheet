@@ -9,7 +9,9 @@ const devEntryPoint = ['react-dev-utils/webpackHotDevClient', prodEntryPoint];
 
 const prodLoader = [loader, 'css-loader'];
 const styleLoader =
-  process.env.NODE_ENV !== 'production' ? ['css-hot-loader', ...prodLoader] : prodLoader;
+  process.env.NODE_ENV !== 'production'
+    ? ['css-hot-loader', ...prodLoader]
+    : prodLoader;
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: './src/client/index.html',
@@ -24,7 +26,7 @@ export default (env, argv) => ({
   devtool: argv.mode === 'production' ? 'inline-source-map' : 'source-map',
   entry: argv.mode === 'production' ? prodEntryPoint : devEntryPoint,
   output: {
-    path: resolve(__dirname, './build/client'),
+    path: resolve(__dirname, './build/src/client'),
     filename: '[name].[hash].js'
   },
   devServer: {

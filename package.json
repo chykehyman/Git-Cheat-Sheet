@@ -7,17 +7,18 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node build/app.js",
-    "start:prod": "npm run build:prod && npm start",
-    "start:dev": "concurrently \"npm run build:dev:server\" \"npm run build:dev:client\"",
+    "start": "node build/src/server/server.js",
+    "start:prod": "yarn build:prod && yarn start",
+    "start:dev": "concurrently \"yarn build:dev:server\" \"yarn build:dev:client\"",
     "build:dev:client": "webpack-dev-server --mode development",
     "build:dev:server": "pm2 start src/server/server.js --watch --interpreter babel-node",
     "build:prod:client": "webpack --mode production",
-    "build:prod:server": "babel src/server/app.js -d build/",
-    "build:prod": "npm run build:prod:client && npm run build:prod:server",
+    "build:prod:server": "rm -rf build/src/server && babel src/server -d build/src/server && babel shared/ -d build/shared",
+    "build:prod": "yarn build:prod:client && yarn build:prod:server",
     "test:api": "export NODE_ENV=test && nyc --reporter=html --reporter=text mocha --timeout 500000 --require @babel/register --require @babel/polyfill src/server/tests/*test.js --watch --watch-extensions js",
     "test:client": "jest --config jest.config.json -u",
-    "test:watch": "yarn test:client -- --watch"
+    "test:watch": "yarn test:client -- --watch",
+    "heroku-postbuild": "yarn build:prod"
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",

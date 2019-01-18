@@ -18,7 +18,7 @@ app.use(compression());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static('build'));
+app.use(express.static('build/src/client'));
 
 mongodbConfig(env);
 
