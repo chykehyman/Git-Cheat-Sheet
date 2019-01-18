@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFoundPage /> component test renders 404(not found page) component without crashing 1`] = `
+<div
+  className="no-items"
+>
+  <p
+    className="lead mb-4 mt-4 display-4"
+    style={
+      Object {
+        "color": "#555",
+      }
+    }
+  >
+    404
+  </p>
+  <i
+    className="fa fa-exclamation-triangle fa-3x pb-3 d-block"
+    style={
+      Object {
+        "color": "#555",
+      }
+    }
+  />
+  <p
+    className="lead"
+    style={
+      Object {
+        "color": "#555",
+      }
+    }
+  >
+    Ooops!!!.. Page with url
+    <span
+      style={
+        Object {
+          "fontWeight": "bold",
+        }
+      }
+    >
+        
+    </span>
+    was not found
+  </p>
+  <Link
+    replace={false}
+    style={
+      Object {
+        "border": "1px solid #ff7043",
+        "borderRadius": "3px",
+        "color": "#ff7043",
+        "cursor": "pointer",
+        "padding": "10px",
+      }
+    }
+    to="/"
+  >
+    Go Back
+  </Link>
+</div>
+`;

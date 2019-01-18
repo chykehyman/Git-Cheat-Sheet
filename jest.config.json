@@ -1,0 +1,30 @@
+{
+  "verbose": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/client/**/*.{js,jsx}",
+    "!<rootDir>/node_modules/",
+    "!<rootDir>/src/client/store/*",
+    "!<rootDir>/src/client/tests/**/*",
+    "!<rootDir>/src/client/tests/*.js",
+    "!<rootDir>/src/client/reducers/index.js",
+    "!src/client/Index.jsx"
+  ],
+  "testRegex": "src/client/tests/.*\\.test.(js|jsx)$",
+  "snapshotSerializers": [
+    "enzyme-to-json/serializer"
+  ],
+  "setupFiles": [
+    "./src/client/tests/jestSetup.js"
+  ],
+  "moduleNameMapper": {
+    ".+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
+    ".+\\.(css|less|scss)$": "identity-obj-proxy"
+  },
+  "restoreMocks": true,
+  "coverageReporters": [
+    "json",
+    "lcov",
+    "text"
+  ]
+}

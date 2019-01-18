@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignInPage /> component render without crashing 1`] = `
+<t
+  className="mt-4"
+  fluid={false}
+  tag="div"
+>
+  <AppLogo />
+  <t
+    tag="div"
+  >
+    <t
+      className="offset-md-3"
+      lg={null}
+      md="6"
+      sm={null}
+      tag="div"
+      xl={null}
+      xs={null}
+    >
+      <t
+        tag="div"
+      >
+        <t
+          tag="div"
+        >
+          <t
+            className="form-header warm-flame-gradient rounded text-center"
+            tag="div"
+          >
+            <h3
+              className="my-2"
+            >
+              <t
+                className="mr-3"
+                icon="lock"
+              />
+              Sign In
+            </h3>
+          </t>
+          <form
+            onSubmit={[Function]}
+          >
+            <div
+              className="grey-text"
+            >
+              <t
+                group={true}
+                icon="user-circle-o"
+                label="username"
+                name="username"
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="text"
+                value=""
+              />
+              <t
+                group={true}
+                icon="lock"
+                label="password"
+                name="password"
+                onChange={[Function]}
+                onFocus={[Function]}
+                type="password"
+                value=""
+              />
+            </div>
+            <div
+              className="d-flex justify-content-center mt-4"
+            >
+              <t
+                className="mb-3"
+                color="deep-orange"
+                disabled={false}
+                tag="button"
+                type="submit"
+              >
+                Sign In
+              </t>
+            </div>
+          </form>
+          <t>
+            <div
+              className="font-weight-light"
+            >
+              <p>
+                Not a member?
+                <Link
+                  className="ml-2"
+                  replace={false}
+                  to="/signup"
+                >
+                  Sign Up
+                </Link>
+              </p>
+            </div>
+          </t>
+        </t>
+      </t>
+    </t>
+  </t>
+</t>
+`;
